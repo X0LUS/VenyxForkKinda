@@ -462,7 +462,7 @@ function Init()
 	function library:Clear()
 		--print(self)
 		--print("\n")
-		print(self.container.Main)
+		print(container.Main)
 		self.container.Main:Destroy()
 	end
 	
