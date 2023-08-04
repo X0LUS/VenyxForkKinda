@@ -460,12 +460,8 @@ do
 	end
 
 	function library:Clear()
-		local container = self.container.Main
-		--print(self)
-		--print("\n")
-		print(container)
 		self.container.Main:Destroy()
-	end
+	end 
 	
 	function library:toggle()
 	
