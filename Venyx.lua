@@ -459,7 +459,7 @@ function Init()
 		end
 	end
 
-	function library.Clear()
+	function library:Clear()
 		print(self)
 		print("\n")
 		print(self.container)
