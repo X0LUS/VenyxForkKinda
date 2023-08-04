@@ -295,7 +295,6 @@ do
 		utility:InitializeKeybind()
 		utility:DraggingEnabled(container.Main.TopBar, container.Main)
 		
-		print(container, container.Main.Pages.Pages_Container, library)
 		return setmetatable({
 			container = container,
 			pagesContainer = container.Main.Pages.Pages_Container,
