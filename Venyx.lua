@@ -204,7 +204,7 @@ local library = {} -- main
 local page = {}
 local section = {}
 
-do
+function Init()
 	library.__index = library
 	page.__index = page
 	section.__index = section
@@ -295,6 +295,7 @@ do
 		utility:InitializeKeybind()
 		utility:DraggingEnabled(container.Main.TopBar, container.Main)
 		
+		print(container, container.Main.Pages.Pages_Container, library)
 		return setmetatable({
 			container = container,
 			pagesContainer = container.Main.Pages.Pages_Container,
@@ -456,6 +457,14 @@ do
 				end
 			end
 		end
+	end
+
+	function library.Clear()
+		self.container.Main:Destroy()
+
+		library = {} -- main
+		page = {}
+		section = {}
 	end
 	
 	function library:toggle()
@@ -2167,5 +2176,7 @@ do
 		end
 	end
 end
+
+Init()
 
 return library
