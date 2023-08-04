@@ -204,7 +204,7 @@ local library = {} -- main
 local page = {}
 local section = {}
 
-function Init()
+do
 	library.__index = library
 	page.__index = page
 	section.__index = section
@@ -2176,7 +2176,5 @@ function Init()
 		end
 	end
 end
-
-Init()
 
 return library
