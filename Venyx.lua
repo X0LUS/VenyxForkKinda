@@ -463,7 +463,7 @@ function Init()
 		local container = self.container.Main
 		--print(self)
 		--print("\n")
-		print(container.Main)
+		print(container)
 		self.container.Main:Destroy()
 	end
 	
