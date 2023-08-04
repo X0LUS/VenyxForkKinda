@@ -460,9 +460,9 @@ function Init()
 	end
 
 	function library:Clear()
-		print(self)
-		print("\n")
-		print(self.container)
+		--print(self)
+		--print("\n")
+		print(self.container.Main)
 		self.container.Main:Destroy()
 	end
 	
