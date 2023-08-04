@@ -460,11 +460,10 @@ function Init()
 	end
 
 	function library.Clear()
+		print(self)
+		print("\n")
+		print(self.container)
 		self.container.Main:Destroy()
-
-		library = {} -- main
-		page = {}
-		section = {}
 	end
 	
 	function library:toggle()
