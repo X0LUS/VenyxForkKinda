@@ -460,6 +460,7 @@ function Init()
 	end
 
 	function library:Clear()
+		local container = self.container.Main
 		--print(self)
 		--print("\n")
 		print(container.Main)
