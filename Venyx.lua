@@ -1772,6 +1772,7 @@ do
 		
 		local search = dropdown.Search
 		local focused
+		local lastchoice
 		
 		list = list or {}
 		
@@ -1795,7 +1796,7 @@ do
 			focused = false
 
 			if search.TextBox.Text == "" then
-				search.TextBox.Text = title
+				search.TextBox.Text = lastchoice or title
 			end
 		end)
 		
@@ -1805,6 +1806,8 @@ do
 				list = #list ~= 0 and list 
 				
 				self:updateDropdown(dropdown, nil, list, callback)
+			else
+				print(search.TextBox.Text)
 			end
 		end)
 		
