@@ -1792,6 +1792,10 @@ do
 		end)
 		
 		search.TextBox.FocusLost:Connect(function()
+			if search.TextBox.Text == "" then
+				search.TextBox.Text = title
+			end
+			
 			focused = false
 		end)
 		
