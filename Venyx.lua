@@ -1792,11 +1792,11 @@ do
 		end)
 		
 		search.TextBox.FocusLost:Connect(function()
+			focused = false
+
 			if search.TextBox.Text == "" then
 				search.TextBox.Text = title
 			end
-			
-			focused = false
 		end)
 		
 		search.TextBox:GetPropertyChangedSignal("Text"):Connect(function()
