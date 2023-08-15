@@ -1806,6 +1806,8 @@ do
 				list = #list ~= 0 and list 
 				
 				self:updateDropdown(dropdown, nil, list, callback)
+
+				print("Updating text to: "..search.TextBox.Text)
 			else
 				print(search.TextBox.Text.." changed but no focus")
 			end
