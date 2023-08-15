@@ -1807,7 +1807,7 @@ do
 				
 				self:updateDropdown(dropdown, nil, list, callback)
 			else
-				print(search.TextBox.Text)
+				print(search.TextBox.Text.." changed but no focus")
 			end
 		end)
 		
