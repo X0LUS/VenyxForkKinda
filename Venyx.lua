@@ -1809,6 +1809,10 @@ do
 
 				print("Updating text to: "..search.TextBox.Text)
 			else
+				if search.TextBox.Text ~= title and search.TextBox.Text ~= "" then
+					lastchoice = search.TextBox.Text
+					print("-------")
+				end
 				print(search.TextBox.Text.." changed but no focus")
 			end
 		end)
@@ -2150,7 +2154,7 @@ do
 				if callback then
 					callback(value, function(...)
 						self:updateDropdown(dropdown, ...)
-					end)	
+					end)
 				end
 
 				self:updateDropdown(dropdown, value, nil, callback)
