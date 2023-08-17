@@ -796,6 +796,50 @@ do
 		
 		return toggle
 	end
+
+	function section:addText(text)
+		local textcontainer = utility:Create("ImageButton", {
+			Name = "Textbox",
+			Parent = self.container,
+			BackgroundTransparency = 1,
+			BorderSizePixel = 0,
+			Size = UDim2.new(1, 0, 0, 30),
+			ZIndex = 2,
+			Image = "rbxassetid://5028857472",
+			ImageColor3 = themes.DarkContrast,
+			ScaleType = Enum.ScaleType.Slice,
+			SliceCenter = Rect.new(2, 2, 298, 298)
+		}, {
+			utility:Create("TextLabel", {
+				Name = "Textfield",
+				BackgroundTransparency = 1,
+				Size = UDim2.new(1, 0, 1, 0),
+				ZIndex = 3,
+				Font = Enum.Font.Gotham,
+				Text = text,
+				TextColor3 = themes.TextColor,
+				TextSize = 12,
+				TextTransparency = 0.10000000149012,
+				TextWrapped = true
+			})
+		})
+
+		local textlabel = textcontainer.Textfield
+
+		table.insert(self.modules, textcontainer)
+
+		if not textlabel.TextFits then
+			repeat
+				local oldsize = textcontainer.AbsoluteSize.Y
+				textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 1)
+			until textlabel.TextFits == true
+
+			local oldsize = textcontainer.AbsoluteSize.Y
+			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 20)
+		end
+
+		return textcontainer
+	end
 	
 	function section:addTextbox(title, default, callback)
 		local textbox = utility:Create("ImageButton", {
@@ -1806,14 +1850,10 @@ do
 				list = #list ~= 0 and list 
 				
 				self:updateDropdown(dropdown, nil, list, callback)
-
-				print("Updating text to: "..search.TextBox.Text)
 			else
 				if search.TextBox.Text ~= title and search.TextBox.Text ~= "" then
 					lastchoice = search.TextBox.Text
-					print("-------")
 				end
-				print(search.TextBox.Text.." changed but no focus")
 			end
 		end)
 		
@@ -1972,7 +2012,39 @@ do
 	end
 	
 	-- updates
-	
+
+	function section:updateText(textcontainer, text)
+		textcontainer = self:getModule(textcontainer)
+
+		local textlabel = textcontainer.Textfield
+
+		textlabel.Text = text
+
+		if textlabel.TextFits then
+			repeat
+				local oldsize = textcontainer.AbsoluteSize.Y
+
+				if oldsize == 12 then
+					textcontainer.Size = UDim2.new(1, 0, 0, 9)
+					break
+				end
+
+				textcontainer.Size = UDim2.new(1, 0, 0, oldsize - 1)
+			until (textlabel.TextFits == false)
+
+			local oldsize = textcontainer.AbsoluteSize.Y
+			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 21)
+		else
+			repeat
+				local oldsize = textcontainer.AbsoluteSize.Y
+				textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 1)
+			until textlabel.TextFits == true
+
+			local oldsize = textcontainer.AbsoluteSize.Y
+			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 20)
+		end
+	end
+
 	function section:updateButton(button, title)
 		button = self:getModule(button)
 		
