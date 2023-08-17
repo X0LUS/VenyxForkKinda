@@ -835,7 +835,7 @@ do
 			until textlabel.TextFits == true
 
 			local oldsize = textcontainer.AbsoluteSize.Y
-			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 20)
+			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 15)
 		end
 
 		return textcontainer
@@ -2025,7 +2025,7 @@ do
 				local oldsize = textcontainer.AbsoluteSize.Y
 
 				if oldsize == 12 then
-					textcontainer.Size = UDim2.new(1, 0, 0, 9)
+					textcontainer.Size = UDim2.new(1, 0, 0, 14)
 					break
 				end
 
@@ -2033,7 +2033,7 @@ do
 			until (textlabel.TextFits == false)
 
 			local oldsize = textcontainer.AbsoluteSize.Y
-			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 21)
+			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 16)
 		else
 			repeat
 				local oldsize = textcontainer.AbsoluteSize.Y
@@ -2041,7 +2041,7 @@ do
 			until textlabel.TextFits == true
 
 			local oldsize = textcontainer.AbsoluteSize.Y
-			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 20)
+			textcontainer.Size = UDim2.new(1, 0, 0, oldsize + 15)
 		end
 	end
 
