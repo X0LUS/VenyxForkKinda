@@ -505,7 +505,7 @@ do
 	
 	-- new modules
 	
-	function library:Notify(title, text, callback)
+	function library:Notify(title, text, callback, duration)
 	
 		-- overwrite last notification
 		if self.activeNotification then
@@ -663,6 +663,16 @@ do
 			
 			close()
 		end)
+
+		if duration then
+			task.delay(duration, function()
+				if callback then
+					callback(nil)
+				end
+
+				close()
+			end)
+		end
 	end
 	
 	function section:addButton(title, callback)
@@ -1842,7 +1852,7 @@ do
 
 			if search.TextBox.Text == "" then
 				search.TextBox.Text = lastchoice or title
-				print("nil so changed to "..(lastchoice or title))
+				--print("nil so changed to "..(lastchoice or title))
 			end
 		end)
 		
@@ -2186,7 +2196,7 @@ do
 		
 		if title then
 			dropdown.Search.TextBox.Text = title
-			print("updatechanged "..title)
+			--print("updatechanged "..title)
 		end
 		
 		local entries = 0
