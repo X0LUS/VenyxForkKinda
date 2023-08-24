@@ -1842,6 +1842,7 @@ do
 
 			if search.TextBox.Text == "" then
 				search.TextBox.Text = lastchoice or title
+				print("nil so changed to "..(lastchoice or title))
 			end
 		end)
 		
@@ -2185,6 +2186,7 @@ do
 		
 		if title then
 			dropdown.Search.TextBox.Text = title
+			print("updatechanged "..title)
 		end
 		
 		local entries = 0
