@@ -447,15 +447,20 @@ do
 	
 	function library:setTheme(theme, color3)
 		themes[theme] = color3
+
+		if objects[theme] then
 		
-		for property, objects in pairs(objects[theme]) do
-			for i, object in pairs(objects) do
-				if not object.Parent or (object.Name == "Button" and object.Parent.Name == "ColorPicker") then
-					objects[i] = nil -- i can do this because weak tables :D
-				else
-					object[property] = color3
+			for property, objects in pairs(objects[theme]) do
+				for i, object in pairs(objects) do
+					if not object.Parent or (object.Name == "Button" and object.Parent.Name == "ColorPicker") then
+						objects[i] = nil -- i can do this because weak tables :D
+					else
+						object[property] = color3
+					end
 				end
 			end
+		else
+			warn(`Couldn't find any objects to change the theme of for {theme}.`)
 		end
 	end
 
