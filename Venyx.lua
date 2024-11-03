@@ -459,8 +459,15 @@ do
 		end
 	end
 
-	function library:Clear()
-		self.container.Main:Destroy()
+	function library:Clear(hardclear)
+
+		for _,v in self.container.Main:GetChildren() do
+			v:Destroy()
+		end
+
+		if hardclear then
+			self.container.Main:Destroy()
+		end
 	end 
 	
 	function library:toggle()
@@ -1859,7 +1866,7 @@ do
 		search.TextBox:GetPropertyChangedSignal("Text"):Connect(function()
 			if focused then
 				local list = utility:Sort(search.TextBox.Text, list)
-				list = #list ~= 0 and list 
+				list = #list ~= 0 and list
 				
 				self:updateDropdown(dropdown, nil, list, callback)
 			else
